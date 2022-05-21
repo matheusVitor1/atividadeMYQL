@@ -1,0 +1,253 @@
+Crie e popule o seguinte banco de dados:
+Banco InterBank
+Tabela:
+cliente, com código, cpf, nome, sobrenome, rua, número, complemento, bairro, cidade, cep, estado, estado civil, sexo, salário, 
+conta, com agencia, número da conta, tipo de conta, detalhes, 
+banco, com codigo da agencia, cidade, bairro,  cep, rua, numero
+conta_cliente, cod conta, cod cliente, data de abertura
+movimento, com codigo movimento, conta_cliente, , data, valor de movimentação
+cartão de crédito, com codigo do cliente, cod conta, limite, data de pagamento, cód movimento.
+Crie as seguintes consultas:
+Faça um consulta que retorne o nome, o sobrenome, o bairro do cliente e os valores das suas movimentações, ordenando pela data da movimentação mais recente.
+Mostre o nome do cliente, seu sobrenome e seu salário convertidos em dólar e em euros.
+Mostre os clientes, seus sexos, estado civil e bairro, com salarios menores que 15000 anuais.
+Mostre os clientes e seus respectivos bairros.
+Mostre todos os clientes que moram no bairro Morumbi com salário maior que 10000 mensal.
+Mostre os clientes que a rua começa com R.
+Mostre o top 5 de clientes com maiores e mostre os de menores salários.
+Mostre os Sobrenomes dos clientes cujos números da rua estão entre 200 e 300.
+Mostre os Nomes e sobrenomes dos clientes que tem cartão de crédito.
+Mostre quantos clientes tem salário maior que a média.
+
+#########################################################################################################################################################################
+
+create database interBankMatheus;
+
+create table cliente(
+
+id_cliente int(7) not null auto_increment,
+cpf_cliente varchar(30),
+nome_cliente varchar(20),
+sobrenome_cliente varchar(20) not null,
+estado_cliente varchar(50) not null,
+cidade_cliente varchar(50) not null,
+bairro_cliente varchar(50) not null,
+rua_cliente varchar(50) not null,
+numero_casa_cliente int(7) not null,
+cep_cliente varchar(10) not null,
+estadoCivil_cliente varchar(15) not null,
+sexo_cliente varchar(20) not null,
+salario_cliente decimal(10.2) not null,
+primary key (id_cliente)
+);
+insert into cliente(id_cliente,cpf_cliente,nome_cliente,sobrenome_cliente,estado_cliente,cidade_cliente,bairro_cliente,rua_cliente,numero_casa_cliente, cep_cliente,estadoCivil_cliente,sexo_cliente,salario_cliente) 
+values (null, "86333389552", "Matheus" , "Oliveira", "São Paulo", "São Caetano do Sul","Olímpico","Luis Fioroti", 127, "09570-030","Solteiro","Masculino",15000.00);
+insert into cliente(id_cliente,cpf_cliente,nome_cliente,sobrenome_cliente,estado_cliente,cidade_cliente,bairro_cliente,rua_cliente,numero_casa_cliente,cep_cliente,estadoCivil_cliente,sexo_cliente,salario_cliente) 
+values (null, "49555377934", "Henrique" , "Oliveira", "São Paulo", "São Caetano do Sul","Olímpico","Luis Fioroti", 128, "09570-030","Solteiro","Masculino",1220.54);
+insert into cliente(id_cliente,cpf_cliente,nome_cliente,sobrenome_cliente,estado_cliente,cidade_cliente,bairro_cliente,rua_cliente,numero_casa_cliente,cep_cliente,estadoCivil_cliente,sexo_cliente,salario_cliente) 
+values (null, "12365644235", "Mauro" , "Oliveira", "São Paulo", "São Caetano do Sul","Olímpico","Luis Fioroti", 148, "09570-030","Casado","Masculino",5000.67);
+insert into cliente(id_cliente,cpf_cliente,nome_cliente,sobrenome_cliente,estado_cliente,cidade_cliente,bairro_cliente,rua_cliente,numero_casa_cliente,cep_cliente,estadoCivil_cliente,sexo_cliente,salario_cliente) 
+values (null, "44236579511", "Regina" , "Alves", "São Paulo", "São Caetano do Sul","Olímpico","Luis Fioroti", 155, "09570-030","Solteiro","Feminino",1475.00);
+insert into cliente(id_cliente,cpf_cliente,nome_cliente,sobrenome_cliente,estado_cliente,cidade_cliente,bairro_cliente,rua_cliente,numero_casa_cliente,cep_cliente,estadoCivil_cliente,sexo_cliente,salario_cliente) 
+values (null, "66695766365", "Lucifer" , "Morningstar", "São Paulo", "São Paulo","Morumbi","Jeovane Groncchi", 666, "66670-030","Casado","Não-Binario",60666.66);
+insert into cliente(id_cliente,cpf_cliente,nome_cliente,sobrenome_cliente,estado_cliente,cidade_cliente,bairro_cliente,rua_cliente,numero_casa_cliente,cep_cliente,estadoCivil_cliente,sexo_cliente,salario_cliente) 
+values (null, "12345678911", "Raul" , "Gil", "São Paulo", "São Paulo","Morumbi","Jeovane Groncchi", 557, "66670-030","Casado","Masculino",30350.65);
+insert into cliente(id_cliente,cpf_cliente,nome_cliente,sobrenome_cliente,estado_cliente,cidade_cliente,bairro_cliente,rua_cliente,numero_casa_cliente,cep_cliente,estadoCivil_cliente,sexo_cliente,salario_cliente) 
+values (null, "75893544626", "Silvio" , "Santos", "São Paulo", "São Paulo","Morumbi","Tavares Monteiro", 99, "43570-030","Casado","Masculino",1005035.49);
+insert into cliente(id_cliente,cpf_cliente,nome_cliente,sobrenome_cliente,estado_cliente,cidade_cliente,bairro_cliente,rua_cliente,numero_casa_cliente,cep_cliente,estadoCivil_cliente,sexo_cliente,salario_cliente) 
+values (null, "98678945632", "Geralda" , "Oliveira", "São Paulo", "São Paulo","Ermelino Matarazzo","Manuel Teles Vitancos", 14, "011441-14","Viuvo","Faminino",2100.34);
+insert into cliente(id_cliente,cpf_cliente,nome_cliente,sobrenome_cliente,estado_cliente,cidade_cliente,bairro_cliente,rua_cliente,numero_casa_cliente,cep_cliente,estadoCivil_cliente,sexo_cliente,salario_cliente) 
+values (null, "98678945635", "Marli" , "Oliveira", "São Paulo", "São Paulo","Ermelino Matarazzo","Manuel Teles Vitancos", 14, "011441-14","Solteiro","Faminino",3100.34);
+insert into cliente(id_cliente,cpf_cliente,nome_cliente,sobrenome_cliente,estado_cliente,cidade_cliente,bairro_cliente,rua_cliente,numero_casa_cliente,cep_cliente,estadoCivil_cliente,sexo_cliente,salario_cliente) 
+values (null, "98678945636", "Kaic" , "Oliveira", "São Paulo", "São Paulo","Ermelino Matarazzo","Manuel Teles Vitancos", 14, "011441-14","Solteiro","Masculino", 1100.00);
+insert into cliente(id_cliente,cpf_cliente,nome_cliente,sobrenome_cliente,estado_cliente,cidade_cliente,bairro_cliente,rua_cliente,numero_casa_cliente,cep_cliente,estadoCivil_cliente,sexo_cliente,salario_cliente) 
+values (null, "49545612395", "Nicoli" , "Santana", "São Paulo", "São Paulo","Paulista","Augusta", 1486, "011661-14","Solteira","Faminino",7100.34);
+insert into cliente(id_cliente,cpf_cliente,nome_cliente,sobrenome_cliente,estado_cliente,cidade_cliente,bairro_cliente,rua_cliente,numero_casa_cliente,cep_cliente,estadoCivil_cliente,sexo_cliente,salario_cliente) 
+values (null, "12345678935", "Roberto" , "Carlos", "São Paulo", "São Paulo","Morumbi","Roberto Carlos", 557, "69570-030","Casado","Masculino",30350.65);
+
+create table conta(
+agencia int (4) not null,
+numero_conta int(20) not null,
+tipo_conta text(30),
+detalhe_conta text(30),
+primary key(numero_conta)
+);
+insert into conta(agencia,numero_conta, tipo_conta,detalhe_conta) 
+values (1010,10163463,"Corrente","Positivo");
+insert into conta(agencia,numero_conta, tipo_conta,detalhe_conta) 
+values (1010,10163464,"Corrente","Positivo");
+insert into conta(agencia,numero_conta, tipo_conta,detalhe_conta) 
+values (1010,10163465,"Corrente","Negativo");
+insert into conta(agencia,numero_conta, tipo_conta,detalhe_conta) 
+values (1010,10163265,"Corrente","Positivo");
+insert into conta(agencia,numero_conta, tipo_conta,detalhe_conta) 
+values (0666,10166666,"Poupança","Positivo");
+insert into conta(agencia,numero_conta, tipo_conta,detalhe_conta) 
+values (1010,10163466,"Corrente","Negativo");
+insert into conta(agencia,numero_conta, tipo_conta,detalhe_conta) 
+values (1115,10444465,"Corrente","Positivo");
+insert into conta(agencia,numero_conta, tipo_conta,detalhe_conta) 
+values (1115,10454465,"Corrente","Positivo");
+insert into conta(agencia,numero_conta, tipo_conta,detalhe_conta) 
+values (1115,10497565,"Corrente","Positivo");
+insert into conta(agencia,numero_conta, tipo_conta,detalhe_conta) 
+values (1115,13424465,"Corrente","Positivo");
+insert into conta(agencia,numero_conta, tipo_conta,detalhe_conta) 
+values (1115,10476465,"Corrente","Positivo");
+insert into conta(agencia,numero_conta, tipo_conta,detalhe_conta) 
+values (1115,10653465,"Corrente","Positivo");
+
+
+
+create table banco(
+id_agencia_banco int(4) not null auto_increment,
+agencia_banco int (4) not null,
+estado_banco varchar(30) not null,
+cidade_banco varchar(30) not null,
+bairro_banco varchar(30) not null,
+rua_banco varchar(30) not null,
+numero_banco int(7) not null,
+cep_banco varchar(10) not null,
+primary	key(id_agencia_banco)
+);
+insert into banco(id_agencia_banco,agencia_banco,estado_banco,cidade_banco,bairro_banco,rua_banco,numero_banco,cep_banco) 
+values (null, 1010,"São Paulo","São Caetano do Sul", "Centro","Av.Goiás",225,"09545-030");
+insert into banco(id_agencia_banco, agencia_banco, estado_banco, cidade_banco,bairro_banco,rua_banco,numero_banco,cep_banco) 
+values (null, 1115,"São Paulo","São Paulo", "Brigadeiro","Av.Prás-lemes",450,"43570-030");
+insert into banco(id_agencia_banco, agencia_banco, estado_banco, cidade_banco,bairro_banco,rua_banco,numero_banco,cep_banco) 
+values (null, 0666,"Hell","Hell", "Estrada das Lágrimas","Av.Mochila de Criança",666,"11666-666");
+
+create table conta_cliente(
+id_conta_cliente int not null auto_increment,
+id_cliente int(7) not null,
+numero_conta_cliente int (20) not null,
+data_abertura date not null,
+foreign key (numero_conta_cliente) references conta(numero_conta),
+foreign key (id_cliente) references cliente(id_cliente),
+primary key(id_conta_cliente)
+);
+
+insert into conta_cliente(id_conta_cliente, id_cliente, numero_conta_cliente,data_abertura)
+values(null,1,10163463,"2019-05-13");
+insert into conta_cliente(id_conta_cliente, id_cliente, numero_conta_cliente,data_abertura)
+values(null,2,10163464,"2020-05-29");
+insert into conta_cliente(id_conta_cliente, id_cliente, numero_conta_cliente,data_abertura)
+values(null,3,10163465,"2020-06-13");
+insert into conta_cliente(id_conta_cliente, id_cliente, numero_conta_cliente,data_abertura)
+values(null,4,10163265,"2020-05-06");
+insert into conta_cliente(id_conta_cliente, id_cliente, numero_conta_cliente,data_abertura)
+values(null,5,10166666,"2006-06-06");
+insert into conta_cliente(id_conta_cliente, id_cliente, numero_conta_cliente,data_abertura)
+values(null,6,10163466,"2020-06-13");
+insert into conta_cliente(id_conta_cliente, id_cliente, numero_conta_cliente,data_abertura)
+values(null,7,10444465,"2020-06-13");
+insert into conta_cliente(id_conta_cliente, id_cliente, numero_conta_cliente,data_abertura)
+values(null,8,10454465,"2020-06-13");
+insert into conta_cliente(id_conta_cliente, id_cliente, numero_conta_cliente,data_abertura)
+values(null,9,10497565,"2020-06-13");
+insert into conta_cliente(id_conta_cliente, id_cliente, numero_conta_cliente,data_abertura)
+values(null,10,13424465,"2020-06-13");
+insert into conta_cliente(id_conta_cliente, id_cliente, numero_conta_cliente,data_abertura)
+values(null,11,10476465,"2020-06-13");
+insert into conta_cliente(id_conta_cliente, id_cliente, numero_conta_cliente,data_abertura)
+values(null,12,10653465,"2020-06-13");
+
+
+
+create table movimento (
+id_movimentacao int (10) not null auto_increment,
+mov_id_cliente int(7) not null,
+mov_conta_cliente int(20) not null,
+mov_valor decimal (15),
+mov_data date not null,
+foreign key (mov_conta_cliente) references conta(numero_conta),
+foreign key (mov_id_cliente) references cliente(id_cliente),
+primary key (id_movimentacao)
+);
+insert into movimento(id_movimentacao, mov_id_cliente, mov_conta_cliente,mov_valor,mov_data)
+values(null,1,10163463,1756.32,"2022-05-13");
+insert into movimento(id_movimentacao, mov_id_cliente, mov_conta_cliente,mov_valor,mov_data)
+values(null,5,10166666,666.66,"2006-06-06");
+insert into movimento(id_movimentacao, mov_id_cliente, mov_conta_cliente,mov_valor,mov_data)
+values(null,3,10163465,10503.95,"2020-12-25");
+insert into movimento(id_movimentacao, mov_id_cliente, mov_conta_cliente,mov_valor,mov_data)
+values(null,7,10444465,10503.95,"2022-05-03");
+
+create table cartaoCredito(
+id_movimento_cartao int(7) not null,
+numero_cartao varchar(15) not null,
+cartao_id_cliente int(7) not null,
+cartao_conta_cliente int(20) not null,
+limite_cartao decimal(20) not null,
+data_pagamento date not null,
+
+foreign key (cartao_conta_cliente) references conta(numero_conta),
+foreign key (cartao_id_cliente) references cliente(id_cliente),
+primary key(numero_cartao));
+
+
+insert into cartaoCredito(id_movimento_cartao, numero_cartao, cartao_id_cliente, cartao_conta_cliente, limite_cartao,data_pagamento)
+values(1,405035169725,1,10163463,2113.65,"2022-05-10");
+insert into cartaoCredito(id_movimento_cartao, numero_cartao, cartao_id_cliente, cartao_conta_cliente, limite_cartao,data_pagamento)
+values(2,505035169525,2,10163464,1113.65,"2022-05-05");
+insert into cartaoCredito(id_movimento_cartao, numero_cartao, cartao_id_cliente, cartao_conta_cliente, limite_cartao,data_pagamento)
+values(3,605035169525,6,10163466,25005.24,"2022-05-21");
+insert into cartaoCredito(id_movimento_cartao, numero_cartao, cartao_id_cliente, cartao_conta_cliente, limite_cartao,data_pagamento)
+values(3,705035169525,12,10653465,10500.56,"2022-05-21");
+
+#1
+select c.nome_cliente, c.sobrenome_cliente, c.bairro_cliente, m.mov_valor
+from cliente c, movimento m, conta_cliente cc
+where c.id_cliente = cc.id_cliente
+and cc.id_cliente = m.mov_id_cliente
+order by mov_valor desc;
+
+#2
+select nome_cliente, sobrenome_cliente,
+cast((salario_cliente / 4.88) as decimal(15,2)) as Dolar,
+cast((salario_cliente / 5.15) as decimal(15,2)) as Dolar
+from cliente;
+
+#3
+select nome_cliente, sobrenome_cliente, sexo_cliente, estadoCivil_cliente
+from cliente
+where (salario_cliente * 12) < 15000;
+
+#4
+select nome_cliente, sobrenome_cliente, bairro_cliente
+from cliente;
+
+#5
+select nome_cliente, sobrenome_cliente, salario_cliente
+from cliente
+where bairro_cliente = "Morumbi" and salario_cliente > 10000;
+
+#6
+select nome_cliente, sobrenome_cliente, rua_cliente
+from cliente
+where rua_cliente like "L%";
+
+#7
+select nome_cliente, sobrenome_cliente, salario_cliente
+from cliente
+order by salario_cliente desc limit 5;
+
+select nome_cliente, sobrenome_cliente, salario_cliente
+from cliente
+order by salario_cliente asc limit 5;
+
+
+#8
+select sobrenome_cliente, rua_cliente, numero_casa_cliente
+from cliente
+where numero_casa_cliente between 100 and 200;
+
+#9
+select c.nome_cliente, c.sobrenome_cliente
+from cliente c, cartaocredito cc
+where c.id_cliente = cc.cartao_id_cliente;
+
+#10
+select nome_cliente, sobrenome_cliente 
+from cliente
+where salario_cliente > (select avg (salario_cliente) from cliente);
